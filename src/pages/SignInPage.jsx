@@ -1,9 +1,13 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Switch from "@mui/material/Switch";
+import { AuthContext } from "../context/AuthContext";
 
-function SignInPage() {
-  const [checked, setChecked] = React.useState(true);
+function SignInPage(props) {
+  const { email, setEmail, password, setPassword, handleLogin } =
+    useContext(AuthContext);
+
+  const [checked, setChecked] = useState(true);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -56,20 +60,33 @@ function SignInPage() {
                 gap: "10px",
               }}
             >
-              <TextField label="Email" variant="standard" />
-              <TextField label="Password" variant="standard" />
+              <TextField
+                label="Email"
+                variant="standard"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                value={email}
+              />
+              <TextField
+                label="Password"
+                variant="standard"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Switch checked={checked} onChange={handleChange} />
                 <Typography>Remember me</Typography>
               </Box>
             </Box>
             <Button
+              type="submit"
               sx={{
                 background: "#21D4FD",
                 background:
                   "linear-gradient(157deg, rgba(33, 212, 253, 1) 0%, rgba(33, 82, 255, 1) 100%)",
                 color: "white",
               }}
+              onClick={handleLogin}
             >
               SIGN IN
             </Button>
