@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Dashboard from "../components/Dashboard";
 import { Container, Typography } from "@mui/material";
 import DashboardInfoCard from "../components/DashboardInfoCard";
+import Chart from "../components/Chart";
+import RestautrandInfoTable from "../components/RestautrandInfoTable";
 
 function HomePage() {
   const [open, setOpen] = React.useState(false);
@@ -23,6 +25,8 @@ function HomePage() {
         {userLoginSucces ? (
           <>
             <DashboardInfoCard />
+            <Chart />
+            <RestautrandInfoTable />
           </>
         ) : (
           <Typography variant="h1">Error</Typography>
