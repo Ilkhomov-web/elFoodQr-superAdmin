@@ -5,6 +5,7 @@ import { Container, Typography } from "@mui/material";
 import DashboardInfoCard from "../components/DashboardInfoCard";
 import Chart from "../components/Chart";
 import RestautrandInfoTable from "../components/RestautrandInfoTable";
+import RestaurantList from "../data/RestaurantList";
 
 function HomePage() {
   const [open, setOpen] = React.useState(false);
@@ -26,7 +27,7 @@ function HomePage() {
           <>
             <DashboardInfoCard />
             <Chart />
-            <RestautrandInfoTable />
+            <RestautrandInfoTable RestaurantList={RestaurantList} />
           </>
         ) : (
           <Typography variant="h1">Error</Typography>
