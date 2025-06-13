@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { Link } from "react-router-dom";
+import PaymentTableMoth from "../components/PaymentTableMoth";
+import RestaurantList from "../data/RestaurantList";
 
 function RestaurantDetails(props) {
   const [open, setOpen] = useState(false);
@@ -87,18 +89,18 @@ function RestaurantDetails(props) {
           </Box>
           <Box
             sx={{
-              background: "yellow",
               width: "100%",
               margin: "30px 0px",
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "left",
+              gap: "20px",
             }}
           >
             <Box
               sx={{
                 width: "358px",
                 background: "white",
-                padding: "10px",
+                padding: "20px",
                 borderRadius: "12px",
                 display: "flex",
                 flexDirection: "column",
@@ -119,50 +121,68 @@ function RestaurantDetails(props) {
             </Box>
             <Box
               sx={{
-                width: "358px",
+                width: "100%",
                 background: "white",
-                padding: "10px",
+                padding: "20px",
                 borderRadius: "12px",
                 display: "flex",
-                flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "start",
                 gap: "10px",
               }}
             >
-              <Typography>QR Scan Settings </Typography>
               <Box>
-                <Box>
-                  <Typography>
-                    Current QR Code:{" "}
-                    <Link style={{ color: "gray" }} to={""}>
-                      https://elka-food/menu=simple.food-menu
-                    </Link>{" "}
-                  </Typography>
-                  <Button>New Generate Qr code</Button>
+                <Typography>QR Scan Settings </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Box
+                    height={"200px"}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Typography>
+                      Current QR Code:{" "}
+                      <Link style={{ color: "gray" }} to={""}>
+                        https://elka-food/menu=simple.food-menu
+                      </Link>{" "}
+                    </Typography>
+                    <Button
+                      sx={{
+                        width: "100%",
+                        background: "#FF0080",
+                        background:
+                          "linear-gradient(165deg,rgba(255, 0, 128, 1) 0%, rgba(121, 40, 202, 1) 100%)",
+                        color: "white",
+                      }}
+                    >
+                      New Generate Qr code
+                    </Button>
+                  </Box>
                 </Box>
               </Box>
+              <Box
+                component={"img"}
+                src="/public/qrCode.svg"
+                sx={{
+                  width: "200px",
+                  background: "white",
+                  borderRadius: "12px",
+                  boxShadow: "5px 5px 10px 0px black",
+                }}
+              ></Box>
             </Box>
-            <Box
-              sx={{
-                width: "358px",
-                background: "white",
-                padding: "10px",
-                borderRadius: "12px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                gap: "10px",
-              }}
-            >
-              <Typography>Platform Settings </Typography>
-              <Box>
-                <Typography>ACCOUNT</Typography>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Switch defaultChecked />}
-                    label="To'lov qilmagan bulsa Vaqtinchalik uzib qo'yish"
-                  />
-                </FormGroup>
-              </Box>
+          </Box>
+          <Box>
+            <Box>
+              <PaymentTableMoth RestaurantList={RestaurantList} />
             </Box>
           </Box>
         </Box>
