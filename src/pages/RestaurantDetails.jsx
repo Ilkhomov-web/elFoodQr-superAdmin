@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Dashboard from "../components/Dashboard";
 import {
   Box,
+  Button,
   Container,
   FormControlLabel,
   FormGroup,
@@ -10,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { Link } from "react-router-dom";
 
 function RestaurantDetails(props) {
   const [open, setOpen] = useState(false);
@@ -38,7 +40,14 @@ function RestaurantDetails(props) {
               Profile
             </Typography>
             <Box>
-              <PhoneIcon sx={{ color: "white" }} />
+              <PhoneIcon
+                sx={{
+                  color: "white",
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
+                }}
+              />
             </Box>
           </Box>
           <Box
@@ -76,7 +85,62 @@ function RestaurantDetails(props) {
               </Box>
             </Box>
           </Box>
-          <Box sx={{ background: "yellow", width: "100%" }}>
+          <Box
+            sx={{
+              background: "yellow",
+              width: "100%",
+              margin: "30px 0px",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Box
+              sx={{
+                width: "358px",
+                background: "white",
+                padding: "10px",
+                borderRadius: "12px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "10px",
+              }}
+            >
+              <Typography>Profile Settings </Typography>
+              <Box>
+                <Typography>ACCOUNT</Typography>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Switch defaultChecked />}
+                    label="To'lov qilmagan bulsa Vaqtinchalik uzib qo'yish"
+                  />
+                </FormGroup>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "358px",
+                background: "white",
+                padding: "10px",
+                borderRadius: "12px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <Typography>QR Scan Settings </Typography>
+              <Box>
+                <Box>
+                  <Typography>
+                    Current QR Code:{" "}
+                    <Link style={{ color: "gray" }} to={""}>
+                      https://elka-food/menu=simple.food-menu
+                    </Link>{" "}
+                  </Typography>
+                  <Button>New Generate Qr code</Button>
+                </Box>
+              </Box>
+            </Box>
             <Box
               sx={{
                 width: "358px",
@@ -100,8 +164,6 @@ function RestaurantDetails(props) {
                 </FormGroup>
               </Box>
             </Box>
-            <Box></Box>
-            <Box></Box>
           </Box>
         </Box>
       </Container>
