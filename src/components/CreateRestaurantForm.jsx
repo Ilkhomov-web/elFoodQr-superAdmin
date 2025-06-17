@@ -4,9 +4,7 @@ import React from "react";
 function CreateRestaurantForm() {
   return (
     <div>
-      <Container maxWidth="lg">
-        <CreateRestaurantForm />
-      </Container>
+      <Container maxWidth="lg">elka</Container>
     </div>
   );
 }
