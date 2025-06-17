@@ -36,7 +36,6 @@ export default function Dashboard(props) {
               textDecoration: "none",
               color: "rgb(200 16 158)",
             }}
-            s
           >
             <ListItemButton sx={{ width: "100%" }}>
               <ListItemIcon>
@@ -60,13 +59,12 @@ export default function Dashboard(props) {
           }}
         >
           <Link
-            to={""}
+            to={"/create-restaurant"}
             style={{
               width: "100%",
               textDecoration: "none",
               color: "rgb(200 16 158)",
             }}
-            s
           >
             <ListItemButton sx={{ width: "100%" }}>
               <ListItemIcon>
@@ -85,7 +83,6 @@ export default function Dashboard(props) {
               textDecoration: "none",
               color: "rgb(200 16 158)",
             }}
-            s
           >
             <ListItemButton sx={{ width: "100%" }}>
               <ListItemIcon>
@@ -101,7 +98,6 @@ export default function Dashboard(props) {
               textDecoration: "none",
               color: "rgb(200 16 158)",
             }}
-            s
           >
             <ListItemButton sx={{ width: "100%" }}>
               <ListItemIcon>
