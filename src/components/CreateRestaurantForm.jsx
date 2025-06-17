@@ -5,13 +5,31 @@ import FileUpload from "./FileUpload";
 function CreateRestaurantForm() {
   const [restaurantName, setRestaurantName] = useState("");
   const [logoFile, setLogoFile] = useState(null);
+  const [adminPhone, setAdminPhone] = useState("");
+  const [phoneCode, setPhoneCode] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Restoran:", restaurantName);
     console.log("Yuklangan fayl:", logoFile);
-    // 👉 logoFile ni FormData orqali Supabase yoki backendga yuborish mumkin
+    console.log("Telefon:", adminPhone);
   };
+
+  const handlePhoneNum = (e) => {
+    const value = e.target.value;
+    const match = value.match(/\((\d{2})\)/); // faqat (90), (91) kabi qismni oladi
+
+    if (match) {
+      const code = match[1]; // faqat ichidagi 90, 91, 93...
+      console.log("Kompaniya kodi:", code); // buni saqlab olishing mumkin
+    }
+    if (match) {
+      setPhoneCode(match[1]); // masalan: 90
+    }
+
+    setAdminPhone(value);
+  };
+
   return (
     <div>
       <Container maxWidth="lg">
@@ -36,6 +54,8 @@ function CreateRestaurantForm() {
             sx={{ p: 3, display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <FileUpload onImageSelect={setLogoFile} />
+
+            {/* name */}
             <Box
               sx={{
                 display: "flex",
@@ -47,9 +67,32 @@ function CreateRestaurantForm() {
               <Typography color="rgb(200, 16, 158)">Restoran Name</Typography>
               <TextField
                 sx={{ width: "85%" }}
-                id="outlined-basic"
                 label="Restoran Name"
                 variant="outlined"
+                value={restaurantName}
+                onChange={(e) => setRestaurantName(e.target.value)}
+              />
+            </Box>
+
+            {/* restoran admin Number */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "30px",
+              }}
+            >
+              <Typography color="rgb(200, 16, 158)">
+                Restoran Admin Phone
+              </Typography>
+              <TextField
+                value={adminPhone}
+                onChange={handlePhoneNum}
+                sx={{ width: "80%" }}
+                label="Restoran Admin Phone"
+                variant="outlined"
+                placeholder="+998 (90) 1234567"
               />
             </Box>
           </Box>
