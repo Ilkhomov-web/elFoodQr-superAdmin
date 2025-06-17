@@ -6,7 +6,6 @@ function CreateRestaurantForm() {
   const [restaurantName, setRestaurantName] = useState("");
   const [logoFile, setLogoFile] = useState(null);
   const [adminPhone, setAdminPhone] = useState("");
-  const [phoneCode, setPhoneCode] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,15 +16,15 @@ function CreateRestaurantForm() {
 
   const handlePhoneNum = (e) => {
     const value = e.target.value;
-    const match = value.match(/\((\d{2})\)/); // faqat (90), (91) kabi qismni oladi
 
-    if (match) {
-      const code = match[1]; // faqat ichidagi 90, 91, 93...
-      console.log("Kompaniya kodi:", code); // buni saqlab olishing mumkin
+    // Agar foydalanuvchi orqaga o‘chirib yuborsa, doim +998 ( qoldir
+    if (!value.startsWith("+998 ")) {
+      setAdminPhone("+998 ");
+      return;
     }
-    if (match) {
-      setPhoneCode(match[1]); // masalan: 90
-    }
+
+    // Agar umumiy uzunligi 20 dan oshsa (yaxshi format nazorati uchun)
+    if (value.length > 20) return;
 
     setAdminPhone(value);
   };
@@ -93,6 +92,24 @@ function CreateRestaurantForm() {
                 label="Restoran Admin Phone"
                 variant="outlined"
                 placeholder="+998 (90) 1234567"
+              />
+            </Box>
+            {/* restoran admin Parol */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "30px",
+              }}
+            >
+              <Typography color="rgb(200, 16, 158)">Restoran Name</Typography>
+              <TextField
+                sx={{ width: "85%" }}
+                label="Restoran Name"
+                variant="outlined"
+                value={restaurantName}
+                onChange={(e) => setRestaurantName(e.target.value)}
               />
             </Box>
           </Box>
