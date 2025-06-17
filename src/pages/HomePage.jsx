@@ -6,10 +6,10 @@ import DashboardInfoCard from "../components/DashboardInfoCard";
 import Chart from "../components/Chart";
 import RestautrandInfoTable from "../components/RestautrandInfoTable";
 import RestaurantList from "../data/RestaurantList";
+import Footer from "../components/Footer";
 
 function HomePage() {
   const [open, setOpen] = React.useState(false);
-  // open menu func
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -33,6 +33,7 @@ function HomePage() {
           <Typography variant="h1">Error</Typography>
         )}
       </Container>
+      <Footer />
     </div>
   );
 }

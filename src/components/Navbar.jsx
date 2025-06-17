@@ -10,7 +10,15 @@ import { Link } from "react-router-dom";
 function Navbar(props) {
   const { toggleDrawer } = props;
   return (
-    <div style={{ width: "100%", background: "white" }}>
+    <div
+      style={{
+        width: "100%",
+        background: "white",
+        position: "sticky",
+        top: "0",
+        zIndex: "1000",
+      }}
+    >
       <Container maxWidth="lg">
         <Box
           sx={{

@@ -14,6 +14,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { Link } from "react-router-dom";
 import PaymentTableMoth from "../components/PaymentTableMoth";
 import RestaurantList from "../data/RestaurantList";
+import Footer from "../components/Footer";
 
 function RestaurantDetails(props) {
   const [open, setOpen] = useState(false);
@@ -187,6 +188,7 @@ function RestaurantDetails(props) {
           </Box>
         </Box>
       </Container>
+      {/* <Footer /> */}
     </div>
   );
 }
