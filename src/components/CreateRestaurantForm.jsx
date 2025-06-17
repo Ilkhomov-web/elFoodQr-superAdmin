@@ -5,29 +5,14 @@ import FileUpload from "./FileUpload";
 function CreateRestaurantForm() {
   const [restaurantName, setRestaurantName] = useState("");
   const [logoFile, setLogoFile] = useState(null);
-  const [adminPhone, setAdminPhone] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Restoran:", restaurantName);
     console.log("Yuklangan fayl:", logoFile);
-    console.log("Telefon:", adminPhone);
   };
 
-  const handlePhoneNum = (e) => {
-    const value = e.target.value;
-
-    // Agar foydalanuvchi orqaga o‘chirib yuborsa, doim +998 ( qoldir
-    if (!value.startsWith("+998 ")) {
-      setAdminPhone("+998 ");
-      return;
-    }
-
-    // Agar umumiy uzunligi 20 dan oshsa (yaxshi format nazorati uchun)
-    if (value.length > 20) return;
-
-    setAdminPhone(value);
-  };
+  const handlePhoneNum = () => {};
 
   return (
     <div>
@@ -53,7 +38,6 @@ function CreateRestaurantForm() {
             sx={{ p: 3, display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <FileUpload onImageSelect={setLogoFile} />
-
             {/* name */}
             <Box
               sx={{
@@ -66,13 +50,47 @@ function CreateRestaurantForm() {
               <Typography color="rgb(200, 16, 158)">Restoran Name</Typography>
               <TextField
                 sx={{ width: "85%" }}
+                id="outlined-basic"
                 label="Restoran Name"
                 variant="outlined"
-                value={restaurantName}
-                onChange={(e) => setRestaurantName(e.target.value)}
               />
             </Box>
-
+            {/* id */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "30px",
+              }}
+            >
+              <Typography color="rgb(200, 16, 158)">Restoran ID</Typography>
+              <TextField
+                sx={{ width: "85%" }}
+                id="outlined-basic"
+                label="Restoran ID"
+                variant="outlined"
+              />
+            </Box>
+            {/* restoran admin name */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "30px",
+              }}
+            >
+              <Typography color="rgb(200, 16, 158)">
+                Restoran Admin Name
+              </Typography>
+              <TextField
+                sx={{ width: "80%" }}
+                id="outlined-basic"
+                label="Restoran Admin Name"
+                variant="outlined"
+              />
+            </Box>
             {/* restoran admin Number */}
             <Box
               sx={{
@@ -86,30 +104,10 @@ function CreateRestaurantForm() {
                 Restoran Admin Phone
               </Typography>
               <TextField
-                value={adminPhone}
-                onChange={handlePhoneNum}
                 sx={{ width: "80%" }}
+                id="outlined-basic"
                 label="Restoran Admin Phone"
                 variant="outlined"
-                placeholder="+998 (90) 1234567"
-              />
-            </Box>
-            {/* restoran admin Parol */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "30px",
-              }}
-            >
-              <Typography color="rgb(200, 16, 158)">Restoran Name</Typography>
-              <TextField
-                sx={{ width: "85%" }}
-                label="Restoran Name"
-                variant="outlined"
-                value={restaurantName}
-                onChange={(e) => setRestaurantName(e.target.value)}
               />
             </Box>
           </Box>
