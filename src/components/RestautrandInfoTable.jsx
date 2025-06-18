@@ -14,6 +14,15 @@ import { Link } from "react-router-dom";
 
 function RestautrandInfoTable(props) {
   const { RestaurantList } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -68,7 +77,18 @@ function RestautrandInfoTable(props) {
                       {item.resName}
                     </Link>
                   </TableCell>
-                  <TableCell align="center">{item.resAdm}</TableCell>
+                  <TableCell
+                    align="center"
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        background: "rgba(233, 233, 233, 0.87)",
+                        borderRadius: "12px",
+                      },
+                    }}
+                  >
+                    {item.resAdm}
+                  </TableCell>
                   <TableCell align="center">{item.resAdmNum}</TableCell>
                   <TableCell
                     align="center"

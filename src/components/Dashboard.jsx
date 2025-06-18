@@ -92,7 +92,7 @@ export default function Dashboard(props) {
             </ListItemButton>
           </Link>
           <Link
-            to={""}
+            to={"/restaurant-list"}
             style={{
               width: "100%",
               textDecoration: "none",

@@ -1,27 +1,24 @@
 import { Box, Container } from "@mui/material";
 import React from "react";
-import CreateRestaurantForm from "../components/CreateRestaurantForm";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
+import RestautrandInfoTable from "../components/RestautrandInfoTable";
+import RestaurantList from "../data/RestaurantList";
 
-function CreateRestaurant() {
+function RestaurantListPage() {
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
-
   return (
     <Box>
       <Dashboard toggleDrawer={toggleDrawer} open={open} />
       <Navbar toggleDrawer={toggleDrawer} />
-
       <Container maxWidth="lg">
-        <CreateRestaurantForm />
+        <RestautrandInfoTable RestaurantList={RestaurantList} />
       </Container>
-      <Footer />
     </Box>
   );
 }
 
-export default CreateRestaurant;
+export default RestaurantListPage;
