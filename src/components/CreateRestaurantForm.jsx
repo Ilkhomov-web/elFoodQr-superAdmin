@@ -110,6 +110,27 @@ function CreateRestaurantForm() {
                 variant="outlined"
               />
             </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "30px",
+              }}
+            >
+              <Typography color="rgb(200, 16, 158)">
+                Restoran Admin Password
+              </Typography>
+              <TextField
+                sx={{ width: "78%" }}
+                id="outlined-basic"
+                label="Restoran Admin Password"
+                variant="outlined"
+              />
+            </Box>
+            <Button sx={{ background: "rgb(200, 16, 158)", color: "white" }}>
+              Create Restaurant
+            </Button>
           </Box>
         </Box>
       </Container>
