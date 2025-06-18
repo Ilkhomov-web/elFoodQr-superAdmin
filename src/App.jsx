@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import CreateRestaurant from "./pages/CreateRestaurant";
 import RestaurantListPage from "./pages/RestaurantListPage";
+import PaymentInfoPage from "./pages/PaymentInfoPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/restaurant-details" element={<RestaurantDetails />} />
         <Route path="/create-restaurant" element={<CreateRestaurant />} />
         <Route path="/restaurant-list" element={<RestaurantListPage />} />
+        <Route path="/payment-info" element={<PaymentInfoPage />} />
       </Routes>
     </AuthProvider>
   );

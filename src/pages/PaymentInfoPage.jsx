@@ -1,11 +1,10 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Navbar from "../components/Navbar";
 import Dashboard from "../components/Dashboard";
-import RestautrandInfoTable from "../components/RestautrandInfoTable";
-import RestaurantList from "../data/RestaurantList";
+import PaymentResCard from "../components/PaymentResCard";
 
-function RestaurantListPage() {
+function PaymentInfoPage() {
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -16,10 +15,13 @@ function RestaurantListPage() {
       <Dashboard toggleDrawer={toggleDrawer} open={open} />
       <Navbar toggleDrawer={toggleDrawer} />
       <Container maxWidth="lg">
-        <RestautrandInfoTable RestaurantList={RestaurantList} />
+        <Typography color="black" variant="h4" sx={{ margin: "20px 0px" }}>
+          Payment Info
+        </Typography>
+        <PaymentResCard />
       </Container>
     </Box>
   );
 }
 
-export default RestaurantListPage;
+export default PaymentInfoPage;

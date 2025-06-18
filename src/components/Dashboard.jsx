@@ -77,7 +77,7 @@ export default function Dashboard(props) {
             </ListItemButton>
           </Link>
           <Link
-            to={""}
+            to={"/payment-info"}
             style={{
               width: "100%",
               textDecoration: "none",

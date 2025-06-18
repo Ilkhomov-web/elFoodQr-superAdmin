@@ -1,6 +1,8 @@
 import {
   Box,
+  Button,
   Paper,
+  Popover,
   Table,
   TableBody,
   TableCell,
@@ -9,20 +11,26 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import MoneyOffIcon from "@mui/icons-material/MoneyOff";
+import PhoneCallbackIcon from "@mui/icons-material/PhoneCallback";
 
 function RestautrandInfoTable(props) {
   const { RestaurantList } = props;
-  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setAnchorEl(null);
   };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <div>
@@ -78,16 +86,22 @@ function RestautrandInfoTable(props) {
                     </Link>
                   </TableCell>
                   <TableCell
+                    aria-describedby={id}
+                    onClick={handleClick}
                     align="center"
                     sx={{
                       cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "10px",
                       "&:hover": {
                         background: "rgba(233, 233, 233, 0.87)",
                         borderRadius: "12px",
                       },
                     }}
                   >
-                    {item.resAdm}
+                    {item.resAdm} <ThumbUpAltIcon color="primary" />
                   </TableCell>
                   <TableCell align="center">{item.resAdmNum}</TableCell>
                   <TableCell
@@ -107,6 +121,35 @@ function RestautrandInfoTable(props) {
             </TableBody>
           </Table>
         </TableContainer>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <Box sx={{ padding: "10px" }}>
+            <Button>
+              <ThumbUpAltIcon />
+              <Typography>Zo'r</Typography>
+            </Button>
+            <Button>
+              <MoneyOffIcon />
+              <Typography>To'lov</Typography>
+            </Button>
+            <Button>
+              <PhoneCallbackIcon />
+              <Typography>Aloqa</Typography>
+            </Button>
+          </Box>
+        </Popover>
       </Box>
     </div>
   );
